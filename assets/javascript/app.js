@@ -1,16 +1,16 @@
 var questionBank = [
 
-        {Q: "Q1", 
-        A: "A1",
+        {Q: "The painting La Gioconda is better known by what name?", 
+        A: "Mona Lisa",
         F1: "F1A",
         F2: "F1B",
         F3: "F1C"
         },
-        {Q: "Q2",
-        A: "A2",
-        F1: "F2A",
-        F2: "F2B",
-        F3: "F2C"
+        {Q: "Si vous pouvez lire cette question, que'est-ce que le couleur de ma voiture?",
+        A: "argent",
+        F1: "rouge",
+        F2: "vert",
+        F3: "marron"
     },
         {Q: "Q3",
         A: "A3",
@@ -85,23 +85,28 @@ function callQuestion () {
 
 
 }
-
+var timer 
 var counter = 0
 function timerCountdown (){
+    var remaining = (60 -counter)
+    if (remaining ===0) {
+        clearInterval(timer);
+        grader();
+    }
     $("#counterSpace").empty();
-       $("#counterSpace").append("Countdown: " + (60-counter) + " seconds");
-       counter++;
+    $("#counterSpace").append("Countdown: " + remaining + " seconds");
+    counter++;
+    
    }
 
 function startQuiz () {
     $("#startGame").empty();
-   setTimeout(grader, 60*1000)
    // counter = 0
    // setInterval w/ render function, every 1 sec
    // render function:
    // output max_time - counter
    // increment counter
-   setInterval(timerCountdown, 1000)
+  timer = setInterval(timerCountdown, 1000)
    
 
     callQuestion()
@@ -134,15 +139,5 @@ startButton();
 
 
 
-
-
-// switch (key) {
-//     case value:
-        
-//         break;
-
-//     default:
-//         break;
-// }
 
 

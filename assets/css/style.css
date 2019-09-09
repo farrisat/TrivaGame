@@ -1,0 +1,10 @@
+body {
+    background-image: linear-gradient(red, yellow);
+    background-repeat: no-repeat;
+  }
+
+.container  {
+    background-color: white;
+    text-align: center;
+
+}
