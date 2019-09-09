@@ -46,12 +46,13 @@ function grader()
         var value= $("input[type='radio']")
         console.log(value[0])
         for(var i = 0; i < value.length; i++) {
-            console.log(value[i])
             if (value[i].value === questionBank[value[i].name].A && value[i].checked===true) {
                 console.log("Right!")
                 numRight = numRight + 1
             }
         }
+       $("#questionSpace").empty()
+       $("#questionSpace").append("You got " + numRight + "  correct! And " +(questionBank.length-numRight)+ " wrong. :(")
 }
 
 function callQuestion () {
@@ -85,11 +86,24 @@ function callQuestion () {
 
 }
 
-
+var counter = 0
+function timerCountdown (){
+    $("#counterSpace").empty();
+       $("#counterSpace").append("Countdown: " + (60-counter) + " seconds");
+       counter++;
+   }
 
 function startQuiz () {
     $("#startGame").empty();
    setTimeout(grader, 60*1000)
+   // counter = 0
+   // setInterval w/ render function, every 1 sec
+   // render function:
+   // output max_time - counter
+   // increment counter
+   setInterval(timerCountdown, 1000)
+   
+
     callQuestion()
 
 }
